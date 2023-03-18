@@ -1,0 +1,16 @@
+
+<div *ngIf="product; else notFound">
+    <h2>Product details</h2>
+    <h3>{{ product.name }}</h3>
+    <h4>{{ product.price }}</h4>
+    <p>{{ product.description }}</p>
+    <button 
+        (click)="addToCart(product)">
+        Buy it now!
+    </button>
+</div>
+
+<ng-template #notFound>
+    <h2>Product not found</h2>
+    <p>I'm sorry the product you are looking for was not found in our database</p>
+</ng-template>

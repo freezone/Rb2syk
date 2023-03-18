@@ -1,5 +1,22 @@
-<h2>Products</h2>
+<h2>Product list</h2>
 
+<div class="productListElement" *ngFor="let product of products">
+    <h3>
+        <a 
+            [routerLink]="['/products', product.urlName]" 
+            [title]="product.name + ' £' + product.price">
+            {{ product.name }}
+        </a>
+    </h3>
+
+    <p *ngIf="product.description">
+        {{ product.description }}
+    </p>
+
+    <button (click)="share()">Share it!</button>
+
+    <app-product-alerts [product]="product" (notify)="onNotify()"></app-product-alerts>
+</div>
 
 <!-- 
 Copyright Google LLC. All Rights Reserved.

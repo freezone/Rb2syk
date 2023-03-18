@@ -1,4 +1,7 @@
-
+.productListElement {
+   border-top: 1px black solid; 
+   padding: 10px;
+}
 
 /*
 Copyright Google LLC. All Rights Reserved.
