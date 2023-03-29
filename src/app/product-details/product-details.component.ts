@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Product, products } from '../products';
 import { CartService } from '../cart.service';
+import { ApiTestService } from '../api-test.service';
+import { Now } from '../now';
 
 @Component({
   selector: 'app-product-details',
@@ -11,15 +13,21 @@ import { CartService } from '../cart.service';
 })
 export class ProductDetailsComponent implements OnInit {
   product: Product | undefined;
+  now: Now | undefined;
 
   constructor(
     private route: ActivatedRoute,
-    private cartService: CartService
+    private cartService: CartService,
+    private api: ApiTestService
   ) {}
 
   addToCart(product: Product){
     this.cartService.addToCart(product);
     window.alert('Your product has been aded to the cart!');
+  }
+
+  getNow(): void {
+    this.api.getNow().subscribe(now => this.now = now);
   }
   
   ngOnInit() {
@@ -30,5 +38,8 @@ export class ProductDetailsComponent implements OnInit {
 
     //this.product = products.find(product => product.id === productIdFromRoute);
     this.product = products.find(product => product.urlName === productUrlNameFromRoute);
+
+    this.getNow();
+    
   }
 }

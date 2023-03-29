@@ -14,3 +14,11 @@
     <h2>Product not found</h2>
     <p>I'm sorry the product you are looking for was not found in our database</p>
 </ng-template>
+
+<div *ngIf="now; else apiError">
+    <p>{{now.datetime}}</p>
+</div>
+
+<ng-template #apiError>
+    <p>API didn't return any value</p>
+</ng-template>
